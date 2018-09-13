@@ -14,7 +14,18 @@ public class Startup
     public void Configure(IApplicationBuilder app)
         {
             app.Use(async (context, next) => {
-                await context.Response.WriteAsync(_config["Application"]);
+
+                await next.Invoke();
+                await context.Response.WriteAsync("Bem vindo 1");
             });
+
+            app.Use(async (context, next) => {
+
+                await next.Invoke();
+
+                await context.Response.WriteAsync("Bem vindo 2");
+            });
+
+            // A ordem dos middlewares são importantes
         }
 }
