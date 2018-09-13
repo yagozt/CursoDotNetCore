@@ -14,7 +14,7 @@ public class Startup
     public void Configure(IApplicationBuilder app)
         {
             app.Use(async (context, next) => {
-                await context.Response.WriteAsync("Trabalhando com classe Startup");
+                await context.Response.WriteAsync(_config["Application"]);
             });
         }
 }

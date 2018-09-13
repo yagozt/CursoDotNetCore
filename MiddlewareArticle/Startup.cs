@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 
+
 public class Startup
 {
     private readonly IConfiguration _config;
@@ -14,7 +15,7 @@ public class Startup
     public void Configure(IApplicationBuilder app)
         {
             app.Use(async (context, next) => {
-                await context.Response.WriteAsync("Trabalhando com classe Startup");
+                await context.Response.WriteAsync(_config["Application"]);
             });
         }
 }
