@@ -60,6 +60,11 @@ namespace MiddlewareAvancado
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "product",
+                    template: "product",
+                    defaults: new {controller = "Product", action = "Save"}
+                );
             });
         }
     }

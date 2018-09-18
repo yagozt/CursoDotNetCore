@@ -1,0 +1,16 @@
+@model MiddlewareAvancado.Models.Product;
+
+<form asp-controller="Product" asp-action="Save" >
+    <label asp-for="Id">Id</label>
+    <input asp-for="Id">
+    <span asp-validation-for="Id"></span>
+    <br>
+    <label asp-for="Nome">Nome</label>
+    <input asp-for="Nome">
+    <span asp-validation-for="Nome"></span>
+    <br>
+    <label asp-for="Preco">Preco</label>
+    <input asp-for="Preco">
+    <span asp-validation-for="Preco"></span>
+    <input type="submit" value="Salvar">
+</form>
