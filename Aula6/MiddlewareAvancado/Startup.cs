@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -60,6 +61,11 @@ namespace MiddlewareAvancado
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "product",
+                    template: "product",
+                    defaults: new {controller = "Product", action = "Save"}
+                );
             });
         }
     }
