@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StoreOfBuild.DI;
 using StoreOfBuild.Domain;
+using StoreOfBuild.Web.Filters;
 
 namespace StoreOfBuild.Web
 {
@@ -35,7 +36,8 @@ namespace StoreOfBuild.Web
 
             Bootstrap.Configure(services, Configuration.GetConnectionString("DefaultConnection"));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(config => config.Filters.Add(typeof(CustomExceptionFilter)))
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +50,7 @@ namespace StoreOfBuild.Web
                 var unitOfWork = (IUnitOfWork)context.RequestServices.GetService(typeof(IUnitOfWork));
                 await unitOfWork.Commit();
             });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -68,6 +71,8 @@ namespace StoreOfBuild.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            
         }
     }
 }
