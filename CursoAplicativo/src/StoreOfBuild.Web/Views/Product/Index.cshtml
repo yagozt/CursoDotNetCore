@@ -1,12 +1,12 @@
-﻿@model IEnumerable<StoreOfBuild.Web.ViewModels.CategoryViewModel>
+﻿@model IEnumerable<StoreOfBuild.Web.ViewModels.ProductViewModel>
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="row header">
     <div class="col-md-12">
-        <h3>Categories</h3>
-        <a href="/Category/CreateOrEdit" class="btn btn-primary">New</a>
+        <h3>Products</h3>
+        <a href="/Product/CreateOrEdit" class="btn btn-primary">New</a>
     </div>
 </div>
 <div class="row">
@@ -18,6 +18,9 @@
                     <tr>
                         <td>
                             <a class="name"> @item.Name </a>
+                        </td>
+                        <td>
+                            <a class="category">@item.CategoryName</a>
                         </td>
                         <td>
                             <a href="/Category/CreateOrEdit/@item.Id" class="btn"> Edit </a>

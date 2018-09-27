@@ -17,7 +17,7 @@
         data-ajax="true" data-ajax-method="POST" data-ajax-failure="formOnFail" data-ajax-success="window.location = '/Category'" asp-anti-forgery>
             <input type="hidden" class="form-control" asp-for="Id">
             <div class="form-group">
-                <label asp-for="Name"></label>
+                <label class="col-md-2 control-label" asp-for="Name">Nome</label>
                 <div class="col-md-8">
                     <input asp-for="Name" type="text" class="form-control">
                     <span asp-validation-for="Name" class="text-danger"></span>

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace StoreOfBuild.Data
+namespace StoreOfBuild.Data.Contexts
 {
     public class ApplicationDbContext : DbContext
     {
@@ -14,6 +14,16 @@ namespace StoreOfBuild.Data
         }
 
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>(eb =>
+            {
+                eb.Property(b => b.Name).HasColumnType("varchar(200)");
+                eb.Property(b => b.Price).HasColumnType("decimal(10, 2)");
+            });
+        }
 
     }
 }
